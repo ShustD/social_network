@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import { follow, unfollow, getUsers } from "../../redux/usersReducer"
 import { Users } from "./Users"
 import { Preloader } from "../../common/Preloader/Preloader"
-import { Navigate } from "react-router-dom"
+
+import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 
 
 export class UsersContainer extends React.Component {
@@ -18,7 +19,7 @@ export class UsersContainer extends React.Component {
     }
    
     render() {
-        if (!this.props.isAuth) return <Navigate to='/login' /> 
+        
         return  <>
             {this.props.isFetching === true ? <Preloader /> :
                 <Users onChangePage={this.onChangePage}
@@ -43,8 +44,8 @@ const mapState = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followInProgress: state.usersPage.followInProgress,
-        isAuth: state.auth.isAuth
     }
 }
 
-UsersContainer = connect(mapState, {getUsers, follow, unfollow})(UsersContainer)
+const AuthRedirectComponent = withAuthRedirect(UsersContainer)
+UsersContainer = connect(mapState, {getUsers, follow, unfollow})(AuthRedirectComponent)
