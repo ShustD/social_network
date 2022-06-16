@@ -1,0 +1,22 @@
+.select__page {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 17px;
+    
+    
+}
+.select__page a {
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.selected {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+.unselected {
+    text-decoration: none;
+    color: #000;
+}

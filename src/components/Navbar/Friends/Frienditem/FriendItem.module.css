@@ -1,0 +1,7 @@
+.item__ava img{
+    height: 50px;
+    border-radius: 50%;
+}
+.item__name {
+    text-align: center;
+}

@@ -1,0 +1,13 @@
+.friends__tittle {
+    margin-top: 150px;
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+}
+.friends__item {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    justify-items: center;
+}

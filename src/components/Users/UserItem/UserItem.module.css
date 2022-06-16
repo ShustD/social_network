@@ -1,0 +1,39 @@
+.item__body {
+    display: flex;
+    
+    width: 600px;
+    margin: 30px auto 0;
+}
+
+.item__content {
+    margin-left: 20px;
+    display: flex;
+    padding: 15px 10px;
+    align-self:center;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 400px;
+    color: black;
+    
+}
+
+.item__link{
+    text-decoration: none;
+}
+
+.item__button {
+    width: 100px;
+    background-color: rgb(81, 209, 255);
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+.item__div__img {
+    width: 80px;
+    margin: 0 auto;
+}
+.item__img {
+    width: 80px;
+    border-radius: 50%;
+}

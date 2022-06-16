@@ -1,0 +1,16 @@
+.infoImg img{
+    width: 100%;
+}
+.item {
+    padding: 20px;
+}
+.info__about {
+    padding-left: 20px;
+}
+.info__tittle {
+    font-size: 20px;
+    color: rgb(3, 18, 228);
+}
+.info__text {
+    padding-left: 30px;
+}
