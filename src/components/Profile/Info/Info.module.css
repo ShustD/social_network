@@ -5,7 +5,7 @@
     padding: 20px;
 }
 .info__about {
-    padding-left: 20px;
+    padding: 10px;
 }
 .info__tittle {
     font-size: 20px;
@@ -13,4 +13,7 @@
 }
 .info__text {
     padding-left: 30px;
+}
+.info__content {
+    display: flex;
 }
