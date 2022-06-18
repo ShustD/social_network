@@ -10,7 +10,7 @@ export const Dialogs = (props) => {
     }
     const onChangeText = (e) => {
         const text = e.target.value
-        props.changeText(text)
+        props.changeDialog(text)
     }
     let dialogElements = props.state.dialogs.map((d, index) => <DialogsItem key={'dialog' + index} name={d.name} id={d.id} />)
 

@@ -1,5 +1,5 @@
-const addDialog = 'ADD-DIALOG'
-const changeDialog = 'CHANGE-DIALOG'
+const ADD_DIALOG = 'ADD_DIALOG'
+const CHANGE_DIALOG = 'CHANGE_DIALOG'
 
 const initialState = {
     dialogs: [
@@ -17,13 +17,13 @@ const initialState = {
 }
 export const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case addDialog: {
+        case ADD_DIALOG: {
             let sms = state.newDialogMessage
             return { ...state,
             messages: [...state.messages, { id: '4', text: sms }],
             newDialogMessage: ''}
         }
-        case changeDialog: {
+        case CHANGE_DIALOG: {
             return {...state,
             newDialogMessage: action.newText}
         }
@@ -34,5 +34,5 @@ export const dialogsReducer = (state = initialState, action) => {
 
 
 }
-export const addDialogActionCreator = () => ({ type: addDialog })
-export const changeDialogActionCreator = (text) => ({ type: changeDialog, newText: text })
+export const addDialog = () => ({ type: ADD_DIALOG })
+export const changeDialog = (text) => ({ type: CHANGE_DIALOG, newText: text })

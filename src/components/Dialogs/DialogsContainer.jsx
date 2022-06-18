@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
-import { addDialogActionCreator, changeDialogActionCreator } from '../../redux/dialogsReducer'
+import { addDialog, changeDialog } from '../../redux/dialogsReducer'
 import { Dialogs } from './Dialogs'
 
 const mapState = (state) => {
@@ -9,12 +10,9 @@ const mapState = (state) => {
     }
 }
 
-const mapDispatch = (dispatch) => {
-    return {
-        addDialog: () => {dispatch(addDialogActionCreator())},
-        changeText: (text) => {dispatch(changeDialogActionCreator(text))}
-    }
-}
- const AuthRedirectComponent = withAuthRedirect(Dialogs)
 
-export const DialogsContainer = connect (mapState, mapDispatch) (AuthRedirectComponent)
+
+export const DialogsContainer = compose(connect (mapState, {addDialog, changeDialog}),
+    withAuthRedirect
+)(Dialogs)
+

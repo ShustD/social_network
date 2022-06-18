@@ -15,6 +15,7 @@ let rerenderApp = () => {
     </Provider>
  );   
 }
+
 rerenderApp()
 store.subscribe(() => {
   rerenderApp()

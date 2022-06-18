@@ -24,6 +24,13 @@ export const userItemApi = {
     },
 }
 
+export const profileApi = {
+    getProfileInfo (userId = 2) {
+        return instans.get(`profile/${userId}`)
+        .then(response => response.data)
+    }
+}
+
 export const headerApi = {
     getAuth() {
         return instans.get(`auth/me`)
@@ -32,9 +39,3 @@ export const headerApi = {
     }
 }
 
-export const profileApi = {
-    getProfileInfo (userId = 2) {
-        return instans.get(`profile/${userId}`)
-        .then(response => response.data)
-    }
-}

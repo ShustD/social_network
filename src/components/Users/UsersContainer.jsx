@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 import { follow, unfollow, getUsers } from "../../redux/usersReducer"
 import { Users } from "./Users"
 import { Preloader } from "../../common/Preloader/Preloader"
-
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
+import { compose } from "redux"
 
 
 export class UsersContainer extends React.Component {
@@ -47,5 +47,8 @@ const mapState = (state) => {
     }
 }
 
-const AuthRedirectComponent = withAuthRedirect(UsersContainer)
-UsersContainer = connect(mapState, {getUsers, follow, unfollow})(AuthRedirectComponent)
+UsersContainer = compose(connect(mapState, {getUsers, follow, unfollow}),
+    withAuthRedirect
+)(UsersContainer)
+
+

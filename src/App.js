@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter} from 'react-router-dom';
 import './App.css';
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 import { HeaderContainer } from './components/Header/HeaderContainer';
