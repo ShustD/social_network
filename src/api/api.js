@@ -3,7 +3,7 @@ import * as axios from 'axios'
 const instans = axios.create ({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
     withCredentials: true,
-    headers : {'API-KEY': 'b92ccc3e-b784-4712-bc04-5aa05b60c5e1'}
+    headers : {'API-KEY': '3dc34a89-829e-4d3d-92d6-3583bc57102f'}
 })
 
 export const userApi = {
@@ -25,8 +25,16 @@ export const userItemApi = {
 }
 
 export const profileApi = {
-    getProfileInfo (userId = 2) {
+    getProfileInfo (userId) {
         return instans.get(`profile/${userId}`)
+        .then(response => response.data)
+    },
+    getUserStatus (userId) {
+        return instans.get(`profile/status/${userId}`)
+       
+    },
+    setUsersStatus (status) {
+        return instans.put(`profile/status`, {status})
         .then(response => response.data)
     }
 }

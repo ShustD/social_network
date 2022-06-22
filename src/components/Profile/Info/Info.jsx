@@ -11,11 +11,18 @@ export const Info = (props) => {
     return (
         <div>
             <div className={p.info__content}>
-                <div className={p.item}>
+                <div>
+                    <div className={p.item}>
                     <img src={props.profile.photos.large} alt="" />
                 </div>
                 <div className={p.info__about}>
-                    <InfoStatus profile={props.profile}/>
+                    <div className={p.info__tittle}>About me</div>
+                    <div>{props.profile.aboutMe}</div>
+                </div>
+                </div>
+                
+                <div className={p.info__about}>
+                    <InfoStatus status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>
