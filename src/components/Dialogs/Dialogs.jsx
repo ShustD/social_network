@@ -1,5 +1,6 @@
 import { Field, Formik } from 'formik'
 import React from 'react'
+import { validatorMessages} from '../../Validators/validator'
 import { DialogsItem } from './DialogItems/DialogItems'
 import d from './Dialogs.module.css'
 import { Message } from './Message/Message'
@@ -21,12 +22,16 @@ export const Dialogs = (props) => {
             <div className={d.messages}>
                 {messageElements}
                 <Formik initialValues={{ newMessage: '' }}
-                    onSubmit={addNewMessage}>
-                    {({ handleSubmit, handleChange }) => (
+                    onSubmit={addNewMessage}
+                    validationSchema={validatorMessages}>
+                    {({ handleSubmit, handleChange, errors, touched }) => (
                         <form onSubmit={handleSubmit} className={d.messageText}>
-                            <Field component="input" name='newMessage' 
+                            <Field component='input' name='newMessage' 
                             onChange={handleChange} placeholder="Enter your message" />
-                            <div>
+                             {errors.newMessage && touched.newMessage ? (
+                                <div className={d.errors}>{errors.newMessage}</div>
+                            ) : null}
+                            <div> 
                                 <button type="submit">Send</button>
                             </div>
                         </form>

@@ -25,3 +25,8 @@
 .messageText {
     margin-top: 30px;
 }
+.errors {
+    color: #ff0000;
+    font-size: large;
+    padding: 10px 0;
+  }
