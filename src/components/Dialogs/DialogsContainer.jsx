@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
-import { addDialog, changeDialog } from '../../redux/dialogsReducer'
+import { addDialog } from '../../redux/dialogsReducer'
 import { Dialogs } from './Dialogs'
 
 const mapState = (state) => {
@@ -12,7 +12,7 @@ const mapState = (state) => {
 
 
 
-export const DialogsContainer = compose(connect (mapState, {addDialog, changeDialog}),
+export const DialogsContainer = compose(connect (mapState, {addDialog}),
     withAuthRedirect
 )(Dialogs)
 

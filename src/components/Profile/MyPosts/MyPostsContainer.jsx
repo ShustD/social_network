@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addLikesActionCreator, addPostActionCreator, changeMessageActionCreator } from '../../../redux/profileReducer';
+import { addLikesActionCreator, addPostActionCreator } from '../../../redux/profileReducer';
 import { MyPosts } from './MyPosts';
 
 const mapState = (state) => {
@@ -9,8 +9,7 @@ const mapState = (state) => {
 }
 const mapDispatch = (dispatch) => {
     return {
-        addPost: () => {dispatch(addPostActionCreator())} ,
-        changeText: (text) => {dispatch(changeMessageActionCreator(text))} ,
+        addPost: (newTextPost) => {dispatch(addPostActionCreator(newTextPost))} ,
         addLikes: (id) => {dispatch(addLikesActionCreator(id))}
     }
 }

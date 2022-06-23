@@ -7,3 +7,13 @@
   width: 50px;
   border-radius: 50%;
 }
+
+.errors {
+  color: #ff0000;
+  font-size: large;
+  padding: 10px 0;
+}
+
+.input {
+  border: 2px solid red;
+}
