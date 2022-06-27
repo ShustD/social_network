@@ -43,7 +43,14 @@ export const headerApi = {
     getAuth() {
         return instans.get(`auth/me`)
         .then(response => response.data)
-
-    }
+    },
+    login(email, password, rememberMe) {
+        return instans.post(`auth/login`, {email, password, rememberMe})
+        .then(response=>response.data)
+    },
+    logout() {
+        return instans.delete(`auth/login`)
+        .then(response => response.data)
+    },
 }
 

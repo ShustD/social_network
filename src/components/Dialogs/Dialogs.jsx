@@ -13,7 +13,7 @@ export const Dialogs = (props) => {
     const addNewMessage = (values) => {
         props.addDialog(values.newMessage)
     }
-
+    
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsItem}>

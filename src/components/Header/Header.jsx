@@ -11,9 +11,12 @@ export const Header = (props) => {
             </div>
             
             <div className={h.header__link}>
-                {props.isAuth === true? <div>
-                <div>{props.login}</div><div>{props.email}</div></div>  : 
-                <NavLink to='/login'>Login</NavLink>} 
+                {props.isAuth === true? <div className={h.link__body}>
+                    <div className={h.link__text}>
+                        <div>{props.login}</div><div>{props.email}</div>
+                    </div>                
+                <button onClick={props.logout}>Log Out</button></div> : 
+                <NavLink to='/login'> <button>Login</button></NavLink>} 
             </div>
         </header>)
 }

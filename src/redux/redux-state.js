@@ -4,6 +4,7 @@ import { dialogsReducer } from "./dialogsReducer"
 import { profileReducer } from "./profileReducer"
 import { usersReducer } from "./usersReducer"
 import thunkMiddleware from 'redux-thunk'
+import { appReducer } from "./appReducer"
 
 
 const redusers = combineReducers({
@@ -11,6 +12,7 @@ const redusers = combineReducers({
     profilePage: profileReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    app: appReducer
     
 })
 export const store = legacy_createStore(redusers, applyMiddleware(thunkMiddleware))

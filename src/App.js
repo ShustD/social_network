@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Routes, BrowserRouter} from 'react-router-dom';
 import './App.css';
+import { Preloader } from './common/Preloader/Preloader';
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 import { HeaderContainer } from './components/Header/HeaderContainer';
 import { LoginPage } from './components/Login/Login';
@@ -10,10 +12,21 @@ import { News } from './components/News/News';
 import { ProfileContainer } from './components/Profile/ProfileContainer';
 import { Settings } from './components/Settings/Settings';
 import { UsersContainer } from './components/Users/UsersContainer';
+import { authorizedPageThunk } from './redux/appReducer';
 
-const App = (props) => {
+export class App extends React.Component {
   
-  return (
+  componentDidMount() {
+    this.props.authorizedPageThunk()
+}
+
+  render() {
+
+    if (!this.props.authorized) {
+      return <Preloader />
+    }
+
+    return (
     <div className='wrapper'>
       <BrowserRouter>
         <HeaderContainer />
@@ -33,9 +46,12 @@ const App = (props) => {
       </BrowserRouter>
     </div>
   );
+  }
 }
-
-export default App;
+const mapState = (state) => ({
+  authorized: state.app.authorized
+})
+App = connect(mapState, {authorizedPageThunk})(App)
 
 
 

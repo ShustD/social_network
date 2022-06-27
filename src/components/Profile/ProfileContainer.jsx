@@ -22,7 +22,8 @@ export class ProfileContainer extends React.Component {
         
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = 24296
+            
+            userId = this.props.userId
         }
         this.props.getProfile(userId)
         this.props.getStatus(userId)
@@ -37,8 +38,8 @@ export class ProfileContainer extends React.Component {
 
 const mapState = (state) => ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
-    status: state.profilePage.userStatus
+    status: state.profilePage.userStatus,
+    userId: state.auth.userId
 })
 
 ProfileContainer = compose(connect(mapState, { getProfile, getStatus, updateStatus }),
