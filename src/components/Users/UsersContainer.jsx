@@ -5,6 +5,7 @@ import { Users } from "./Users"
 import { Preloader } from "../../common/Preloader/Preloader"
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 import { compose } from "redux"
+import { getUserCount, getTotalCount, getCurrentPage, getFollowInProgress, getUsersReselect } from "../selectors/userSelector"
 
 
 export class UsersContainer extends React.Component {
@@ -38,12 +39,11 @@ export class UsersContainer extends React.Component {
 const mapState = (state) => {
 
     return {
-        state: state.usersPage.users,
-        totalCount: state.usersPage.totalCount,
-        usersCount: state.usersPage.usersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followInProgress: state.usersPage.followInProgress,
+        state: getUsersReselect(state) ,
+        totalCount: getTotalCount(state),
+        usersCount: getUserCount(state) ,
+        currentPage: getCurrentPage(state),
+        followInProgress: getFollowInProgress(state),
     }
 }
 
