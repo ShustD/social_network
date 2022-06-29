@@ -2,7 +2,8 @@ import React from 'react';
 import { Preloader } from '../../../common/Preloader/Preloader';
 
 import p from './Info.module.css'
-import { InfoStatus } from './InfoStatus';
+
+import { InfoStatusWithHooks } from './InfoStatusWithHooks';
 
 export const Info = (props) => {
     if (!props.profile) {
@@ -22,7 +23,7 @@ export const Info = (props) => {
                 </div>
                 
                 <div className={p.info__about}>
-                    <InfoStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <InfoStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>
