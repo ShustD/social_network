@@ -1,11 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import p from './Info.module.css'
 
 export const InfoStatusWithHooks = (props) => {
     const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(props.status)
     
+    useEffect( () => {
+        setStatus(props.status)
+    }, [props.status])
     const activeEditMode = () => {
         setEditMode(true)
     }
@@ -25,7 +28,7 @@ export const InfoStatusWithHooks = (props) => {
                 <div className={p.info__tittle}>Status</div>
                 {!editMode &&
                     <div onDoubleClick={activeEditMode} className={p.info__text}>
-                        {props.status || 'put your st'}</div>}
+                        {props.status || 'put your status'}</div>}
                 {editMode &&
                     <input onChange={onStatusChange} onBlur={deActiveEditMode} 
                     value={status} autoFocus={true} className={p.info__text} />}
