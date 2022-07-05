@@ -17,9 +17,9 @@ let rerenderApp = () => {
 }
 
 rerenderApp()
-store.subscribe(() => {
-  rerenderApp()
-})
+// store.subscribe(() => {
+//   rerenderApp()
+// })
 
 
 

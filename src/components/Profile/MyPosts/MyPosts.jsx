@@ -4,15 +4,16 @@ import { validatorPost } from '../../../Validators/validator';
 import p from './MyPosts.module.css'
 import { Post } from './Post/Post';
 
-export const MyPosts = (props) => {
+export let MyPosts = (props) => {
     
+ 
     let postElements = props.state.posts.map((p, index) => <Post key={'post' + index} mes={p.text} count={p.likesCount} id={index} addLikes={props.addLikes} />)
 
     const addnewTextPost = (value) => {
         props.addPost(value.newTextPost)
     }
 
-
+    
     return (
         <div className={p.item}>
 
@@ -41,3 +42,5 @@ export const MyPosts = (props) => {
             </div>
         </div >)
 }
+
+MyPosts = React.memo(MyPosts)

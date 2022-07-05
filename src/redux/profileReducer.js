@@ -4,11 +4,12 @@ const addPost = 'ADD-POST'
 const addLikes = 'ADD-LIKES'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
+const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     posts: [
-        { text: 'Да здравстует первый пост!', likesCount: 10 },
-        { text: 'Второй пост, настало твое время!', likesCount: 15 },],
+        { postId: 0, text: 'Да здравстует первый пост!', likesCount: 10 },
+        { postId: 1, text: 'Второй пост, настало твое время!', likesCount: 15 },],
     newTextMessage: 'BLABLABLA',
     profile: null,
     userStatus: ''
@@ -42,6 +43,12 @@ export const profileReducer = (state = initialState, action) => {
                 userStatus: action.userStatus
             }
         }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter( p => p.postId != action.postId)
+            }
+        }
         default:
             return state
     }
@@ -49,6 +56,7 @@ export const profileReducer = (state = initialState, action) => {
 }
 
 export const addPostActionCreator = (newTextPost) => ({ type: addPost, newTextPost })
+export const deletePostActionCreator = (postId) => ({ type: DELETE_POST, postId })
 export const addLikesActionCreator = (id) => ({ type: addLikes, id: id })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatus = (userStatus) => ({ type: SET_USER_STATUS, userStatus })
