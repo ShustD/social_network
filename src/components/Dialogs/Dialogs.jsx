@@ -12,6 +12,7 @@ export const Dialogs = (props) => {
     let messageElements = props.state.messages.map((m, index) => <Message key={'message' + index} text={m.text} />)
     const addNewMessage = (values) => {
         props.addDialog(values.newMessage)
+        speechSynthesis.speak(new SpeechSynthesisUtterance(values.newMessage));
     }
     
     return (
@@ -27,7 +28,7 @@ export const Dialogs = (props) => {
                     {({ handleSubmit, handleChange, errors, touched }) => (
                         <form onSubmit={handleSubmit} className={d.messageText}>
                             <Field component='input' name='newMessage' 
-                            onChange={handleChange} placeholder="Enter your message" />
+                            onChange={handleChange} placeholder="Enter your message" /> 
                              {errors.newMessage && touched.newMessage ? (
                                 <div className={d.errors}>{errors.newMessage}</div>
                             ) : null}

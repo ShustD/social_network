@@ -5,6 +5,7 @@ const addLikes = 'ADD-LIKES'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 const DELETE_POST = 'DELETE_POST'
+const USER_PHOTO = 'USER_PHOTO'
 
 let initialState = {
     posts: [
@@ -49,6 +50,11 @@ export const profileReducer = (state = initialState, action) => {
                 posts: state.posts.filter( p => p.postId !== action.postId)
             }
         }
+        case USER_PHOTO: {
+            return { ...state, 
+                profile: {...state.profile, photos: action.file}
+            }
+        }
         default:
             return state
     }
@@ -60,6 +66,7 @@ export const deletePostActionCreator = (postId) => ({ type: DELETE_POST, postId 
 export const addLikesActionCreator = (id) => ({ type: addLikes, id: id })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatus = (userStatus) => ({ type: SET_USER_STATUS, userStatus })
+export const userPhoto = (file) => ({ type: USER_PHOTO, file })
 
 export const getProfile = (userId) => async (dispatch) => {
    const data = await profileApi.getProfileInfo(userId)
@@ -76,3 +83,9 @@ export const updateStatus = (status) => async (dispatch) => {
                 dispatch(setUserStatus(status))
             }
         }
+export const onChangePhoto = (file) => async (dispatch) => {
+    const data = await profileApi.changePhoto(file)
+        if(data.resultCode === 0) {
+                dispatch(userPhoto(data.data.photos))
+            }
+}

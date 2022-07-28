@@ -5,10 +5,10 @@ import { Users } from "./Users"
 import { Preloader } from "../../common/Preloader/Preloader"
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 import { compose } from "redux"
-import { getUserCount, getTotalCount, getCurrentPage, getFollowInProgress, getUsersReselect } from "../selectors/userSelector"
+import { getUserCount, getTotalCount, getCurrentPage, getFollowInProgress, getUsersReselect, getPortionSize } from "../selectors/userSelector"
 
 
-export class UsersContainer extends React.Component {
+export default class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.usersCount)
@@ -28,6 +28,7 @@ export class UsersContainer extends React.Component {
                     unfollow={this.props.unfollow}
                     totalCount={this.props.totalCount}
                     usersCount={this.props.usersCount}
+                    portionSize={this.props.portionSize}
                     currentPage={this.props.currentPage}
                     state={this.props.state}
                     followInProgress={this.props.followInProgress}
@@ -44,6 +45,7 @@ const mapState = (state) => {
         usersCount: getUserCount(state) ,
         currentPage: getCurrentPage(state),
         followInProgress: getFollowInProgress(state),
+        portionSize: getPortionSize(state)
     }
 }
 

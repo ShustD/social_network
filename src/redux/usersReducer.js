@@ -14,7 +14,8 @@ let initialState = {
     usersCount: 4,
     currentPage: 1,
     isFetching: false,
-    followInProgress: []
+    followInProgress: [],
+    portionSize: 10
 }
 export const usersReducer = (state = initialState, action) => {
     switch (action.type) {

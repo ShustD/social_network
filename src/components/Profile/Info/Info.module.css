@@ -4,6 +4,10 @@
 .item {
     padding: 20px;
 }
+.item img {
+    width: 220px;
+    border-radius: 50%;
+}
 .info__about {
     padding: 10px;
 }
@@ -16,4 +20,8 @@
 }
 .info__content {
     display: flex;
+}
+
+.input__file {
+    padding-left: 20px;
 }

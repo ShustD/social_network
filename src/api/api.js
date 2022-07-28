@@ -36,6 +36,15 @@ export const profileApi = {
     setUsersStatus (status) {
         return instans.put(`profile/status`, {status})
         .then(response => response.data)
+    },
+    changePhoto (file) {
+        const formData = new FormData()
+        formData.append('image', file)
+        return instans.put(`profile/photo`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }})
+        .then(response => response.data)
     }
 }
 

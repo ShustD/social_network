@@ -26,3 +26,6 @@ export const getIsFetching = (state) => {
 export const getFollowInProgress = (state) => {
     return state.usersPage.followInProgress
 }
+export const getPortionSize = (state) => {
+    return state.usersPage.portionSize
+}
