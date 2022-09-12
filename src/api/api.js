@@ -45,6 +45,10 @@ export const profileApi = {
             'Content-Type': 'multipart/form-data'
         }})
         .then(response => response.data)
+    },
+    putFormOnServer (value) {
+        return instans.put(`profile`, value)
+        .then(response => response.data)
     }
 }
 
@@ -53,8 +57,8 @@ export const headerApi = {
         return instans.get(`auth/me`)
         .then(response => response.data)
     },
-    login(email, password, rememberMe) {
-        return instans.post(`auth/login`, {email, password, rememberMe})
+    login(email, password, rememberMe, captcha) {
+        return instans.post(`auth/login`, {email, password, rememberMe, captcha})
         .then(response=>response.data)
     },
     logout() {
@@ -63,3 +67,9 @@ export const headerApi = {
     },
 }
 
+export const securityApi = {
+    getCaptchaUrl() {
+        return instans.get(`security/get-captcha-url`)
+        .then(response => response.data)
+    }
+}

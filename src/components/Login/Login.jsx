@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import React from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { login } from "../../redux/authReducer";
+import { login, getCaptchaUrlSuccess } from "../../redux/authReducer";
 import { validatorLogin } from "../../Validators/validator";
 import s from "./LoginPage.module.css"
 
@@ -23,9 +23,9 @@ const LoginForm = (props) => {
     
     return (
         <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ email: '', password: '', captcha: '' }}
             onSubmit={(value) => {
-                props.login(value.email, value.password, value.rememberMe);
+                props.login(value.email, value.password, value.rememberMe, value.captcha) && props.getCaptchaUrlSuccess(null)
               }}
               validationSchema={validatorLogin}>
                 {({ errors, touched }) => (
@@ -42,6 +42,8 @@ const LoginForm = (props) => {
                 <button type="submit" >
                     Login
                 </button>
+                
+                {props.captcha && <div><img src={props.captcha} alt="" /> <Field type="text" name="captcha" component="input"/></div>  }
                 {props.apiError ? <div className={s.errors}>{props.apiError}</div> : null}
             </Form>
                 )}
@@ -52,7 +54,8 @@ const LoginForm = (props) => {
 }
 const mapState = (state) => ({
     isAuth: state.auth.isAuth,
-    apiError: state.auth.apiError
+    apiError: state.auth.apiError,
+    captcha: state.auth.captcha
 })
 
-LoginPage = connect (mapState, {login})(LoginPage)
+LoginPage = connect (mapState, {login, getCaptchaUrlSuccess })(LoginPage)
